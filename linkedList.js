@@ -65,7 +65,7 @@ class LinkedList {
   printSize() {
     return console.log(`Size of list is: ${this.size}`);
   }
-  printAtIndex(index) {
+  printAt(index) {
     if (index >= this.size || index < 0) return;
 
     let currentNode = this.head;
@@ -80,7 +80,7 @@ class LinkedList {
     return console.log('Head: ') + console.log(this.head.data);
   }
   printTail() {
-    return console.log('Tail: ') + this.printAtIndex(this.size - 1);
+    return console.log('Tail: ') + this.printAt(this.size - 1);
   }
   pop() {
     let currentNode = this.head;
@@ -93,7 +93,7 @@ class LinkedList {
     this.size--;
   }
   removeAt(index) {
-    if (index >= this.size || index < 0) return;
+    if (index > this.size || index < 0) return;
 
     let currentNode = this.head;
     let previousNode;
@@ -116,7 +116,7 @@ class LinkedList {
   contains(data) {
     let currentNode = this.head;
     let count = 0;
-    while (count < this.size - 1) {
+    while (count <= this.size - 1) {
       if (currentNode.data == data) return console.log('TRUE');
       count++;
       currentNode = currentNode.next;
@@ -150,25 +150,40 @@ const list = new LinkedList();
 list.append(100);
 list.append(200);
 list.append(300);
+list.prepend(50);
+list.prepend(25);
 list.append(400);
-// list.append(500);
-// list.prepend(50);
-// list.append(600);
-// list.prepend(700);
-// list.printAll();
-// list.printSize();
-// list.printAtIndex(6);
-// list.printHead();
-// list.printTail();
-// console.log('POP');
-// list.pop();
-// list.printAll();
-// list.contains(700);
-// list.find(700);
-// list.toString();
-console.log('----------');
-// list.insertAt(500, -10);
 list.printAll();
-list.removeAt(0);
-console.log('----------');
+console.log('------');
+list.printSize();
+console.log('------');
+list.printAt(2);
+console.log('------');
+list.printHead();
+list.printTail();
+console.log('------');
+console.log('POP');
+list.pop();
 list.printAll();
+list.contains(300);
+console.log('------');
+list.find(50);
+console.log('----------');
+list.insertAt(500, 3);
+list.printAll();
+list.removeAt(1);
+console.log('----------');
+list.toString();
+
+console.log('NEW LIST WITH ANIMALS');
+console.log("----------------------")
+const animalList = new LinkedList();
+
+animalList.append('dog');
+animalList.append('cat');
+animalList.append('parrot');
+animalList.append('hamster');
+animalList.append('snake');
+animalList.append('turtle');
+animalList.printAll();
+animalList.toString();
